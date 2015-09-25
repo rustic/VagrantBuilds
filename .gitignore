@@ -1,0 +1,13 @@
+# Cache objects
+packer_cache/
+
+# For built boxes
+*.box
+packer*
+
+# And the rest
+fedora22NOVMW.json
+Vagrant*
+.DS_Store
+.vagrant/  
+.git/
