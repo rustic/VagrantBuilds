@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ `facter virtual` != "vmware" ]]; then
+if [[ `sudo facter virtual` != "vmware" ]]; then
     exit 0
 fi
 
