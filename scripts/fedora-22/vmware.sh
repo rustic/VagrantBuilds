@@ -6,13 +6,4 @@ fi
 
 # Install the VMWare Tools from a linux ISO.
 
-sudo mount -o loop,ro ~/linux.iso /mnt/
-
-cd /tmp
-sudo tar xzf /mnt/VMwareTools-*.tar.gz
-
-sudo umount /mnt/
-sudo rm -fr ~/linux.iso
-
-sudo /tmp/vmware-tools-distrib/vmware-install.pl -d
-sudo rm -fr /tmp/vmware-tools-distrib
+sudo dnf install -y fuse-libs open-vm-tools

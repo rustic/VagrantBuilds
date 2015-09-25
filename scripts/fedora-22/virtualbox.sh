@@ -3,7 +3,7 @@
 set -e
 set -x
 
-if [[ `sudo facter virtual` != "virtualbox" ]]; then
+if [[ `sudo facter virtual` = "vmware" ]]; then
     exit 0
 fi
 
