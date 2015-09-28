@@ -8,10 +8,6 @@ if [[ `sudo facter virtual` = "vmware" ]]; then
 fi
 
 sudo dnf -y install dkms
-sudo dnf -y install gcc 
-sudo dnf -y install kernel-headers  
-sudo dnf -y install make
-sudo dnf -y install perl
 # Uncomment this if you want to install Guest Additions with support for X
 #sudo dnf -y install xorg-x11-server-Xorg
 

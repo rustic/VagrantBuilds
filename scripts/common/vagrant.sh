@@ -5,7 +5,7 @@ set -x
 
 date | sudo tee /etc/vagrant_box_build_time
 
-mkdir -p ~/.ssh
-curl -fsSLo ~/.ssh/authorized_keys https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub
-chmod 700 ~/.ssh/
-chmod 600 ~/.ssh/authorized_keys
+mkdir -pm 700 /home/vagrant/.ssh
+wget --no-check-certificate 'https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub' -O /home/vagrant/.ssh/authorized_keys
+chmod 0600 /home/vagrant/.ssh/authorized_keys
+chown -R vagrant /home/vagrant/.ssh
