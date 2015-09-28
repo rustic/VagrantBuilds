@@ -57,7 +57,7 @@
                 ["modifyvm", "{{.Name}}", "--memory", "1024"],
                 ["modifyvm", "{{.Name}}", "--cpus", "1"]
             ],
-            "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
+            "guest_additions_path": "VBoxGuestAdditions.iso",
             "virtualbox_version_file": ".vbox_version"
         },
         {
@@ -101,7 +101,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.16"
+                "version": "0.0.17"
             }
         },
         {
@@ -111,7 +111,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.16"
+                "version": "0.0.17"
             }
         }]
     ]
