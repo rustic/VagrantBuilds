@@ -35,9 +35,9 @@
         {
             "type": "virtualbox-iso",
             "boot_command": [
-                "<esc>",
+                "<tab>",
                 "<wait>",
-                "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-22/anaconda-ks.cfg inst.nodnf=1 biosdevname=0 net.ifnames=0",
+                "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-23/anaconda-ks.cfg inst.nodnf=1 biosdevname=0 net.ifnames=0",
                 "<enter>"
             ],
             "headless": true,
@@ -63,9 +63,9 @@
         {
             "type": "vmware-iso",
             "boot_command": [
-                "<esc>",
+                "<tab>",
                 "<wait>",
-                "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-22/anaconda-ks.cfg inst.nodnf=1 biosdevname=0 net.ifnames=0",
+                "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-23/anaconda-ks.cfg inst.nodnf=1 biosdevname=0 net.ifnames=0",
                 "<enter>"
             ],
             "boot_wait": "10s",
@@ -101,7 +101,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.0.1"
+                "version": "0.0.2"
             }
         },
         {
@@ -111,7 +111,7 @@
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.0.1"
+                "version": "0.0.2"
             }
         }]
     ]
