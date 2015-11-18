@@ -5,7 +5,7 @@
     },
     "variables": {
         "atlas_username": "rustic",
-        "atlas_name": "Fedora22"
+        "atlas_name": "Fedora23"
     },
     "provisioners": [
         {
@@ -45,9 +45,9 @@
             "disk_size": 8192,
             "guest_os_type": "Fedora_64",
             "http_directory": "http",
-            "iso_checksum": "9f1f2f19f75cc3b97da41878b5c86188fa8d27ed446bd97d9df615c137c77cfc",
+            "iso_checksum": "32e0a15a1c71d0e2fd36a0af5b67a3b3af82976d2dfca0aefcb90d42f2ae6844",
             "iso_checksum_type": "sha256",
-            "iso_url": "http://mirror.pnl.gov/fedora/linux/releases/22/Server/x86_64/iso/Fedora-Server-netinst-x86_64-22.iso",
+            "iso_url": "http://mirror.pnl.gov/fedora/linux/releases/23/Server/x86_64/iso/Fedora-Server-netinst-x86_64-23.iso",
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
             "ssh_port": 22,
@@ -77,9 +77,9 @@
                 "memsize": "1024",
                 "numvcpus": "1"
             },
-            "iso_checksum": "9f1f2f19f75cc3b97da41878b5c86188fa8d27ed446bd97d9df615c137c77cfc",
+            "iso_checksum": "32e0a15a1c71d0e2fd36a0af5b67a3b3af82976d2dfca0aefcb90d42f2ae6844",
             "iso_checksum_type": "sha256",
-            "iso_url": "http://mirror.pnl.gov/fedora/linux/releases/22/Server/x86_64/iso/Fedora-Server-netinst-x86_64-22.iso",
+            "iso_url": "http://mirror.pnl.gov/fedora/linux/releases/23/Server/x86_64/iso/Fedora-Server-netinst-x86_64-23.iso",
             "skip_compaction": true,
             "ssh_username": "vagrant",
             "ssh_password": "vagrant",
@@ -97,21 +97,21 @@
         {
             "type": "atlas",
             "only": ["vmware-iso"],
-            "artifact": "rustic/Fedora22",
+            "artifact": "rustic/Fedora23",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "vmware_desktop",
-                "version": "0.1.2"
+                "version": "0.0.1"
             }
         },
         {
             "type": "atlas",
             "only": ["virtualbox-iso"],
-            "artifact": "rustic/Fedora22",
+            "artifact": "rustic/Fedora23",
             "artifact_type": "vagrant.box",
             "metadata": {
                 "provider": "virtualbox",
-                "version": "0.1.2"
+                "version": "0.0.1"
             }
         }]
     ]
