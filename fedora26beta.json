@@ -95,24 +95,16 @@
             "keep_input_artifact": false
         },
         {
-            "type": "atlas",
-            "only": ["vmware-iso"],
-            "artifact": "rustic/Fedora26beta",
-            "artifact_type": "vagrant.box",
-            "metadata": {
-                "provider": "vmware_desktop",
-                "version": "0.0.2"
-            }
+            "type": "vagrant-cloud",
+            "include": ["vmware-iso"],
+            "box_tag": "rustic/Fedora26beta",
+             "version": "0.0.2"
         },
         {
-            "type": "atlas",
-            "only": ["virtualbox-iso"],
-            "artifact": "rustic/Fedora26beta",
-            "artifact_type": "vagrant.box",
-            "metadata": {
-                "provider": "virtualbox",
-                "version": "0.0.2"
-            }
+            "type": "vagrant-cloud",
+            "include": ["virtualbox-iso"],
+            "box_tag": "rustic/Fedora26beta",
+            "version": "0.0.2"
         }]
     ]
 }
