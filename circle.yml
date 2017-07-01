@@ -2,7 +2,7 @@ machine:
   timezone: America/New_York
 
   environment:
-    PACKER_VERSION: 0.8.6
+    PACKER_VERSION: 1.0.2
 
 dependencies:  
   pre:
@@ -11,7 +11,7 @@ dependencies:
       sudo mkdir /opt/packer &&
       pushd /opt/packer &&
       echo "Downloading packer ${PACKER_VERSION}..." &&
-      sudo wget --no-verbose https://dl.bintray.com/mitchellh/packer/packer_${PACKER_VERSION}_linux_amd64.zip &&
+      sudo wget --no-verbose https://releases.hashicorp.com/packer/${PACKER_VERSION}/packer_${PACKER_VERSION}_linux_amd64.zip &&
       echo "Installing packer ${PACKER_VERSION}..." &&
       sudo unzip packer_${PACKER_VERSION}_linux_amd64.zip &&
       sudo rm packer_${PACKER_VERSION}_linux_amd64.zip &&
@@ -22,4 +22,4 @@ deployment:
   publish:
     branch: master
     commands:
-      - packer push -name=rustic/Fedora23 fedora23.json
+      - packer push -name=rustic/Fedora26beta fedora26beta.json

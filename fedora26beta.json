@@ -1,0 +1,118 @@
+{
+    "push": {
+      "name": "",
+      "vcs": false
+    },
+    "variables": {
+        "atlas_username": "rustic",
+        "atlas_name": "Fedora26beta"
+    },
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": [
+                "scripts/fedora-22/additions.sh",
+                "scripts/fedora-22/virtualbox.sh",
+                "scripts/fedora-22/vmware.sh",
+                "scripts/common/vagrant.sh",
+                "scripts/common/sshd.sh",
+                "scripts/fedora/network.sh",
+                "scripts/fedora/locale.sh",
+                "scripts/fedora-22/cleanup.sh",
+                "scripts/common/minimize.sh"
+            ],
+            "override": {
+                "virtualbox-iso": {
+                    "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                },
+                "vmware-iso": {
+                    "execute_command": "echo 'vagrant'|sudo -S bash '{{.Path}}'"
+                }
+            }
+        }
+    ],
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "boot_command": [
+                "<tab>",
+                "<wait>",
+                "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-23/anaconda-ks.cfg inst.nodnf=1 biosdevname=0 net.ifnames=0",
+                "<enter>"
+            ],
+            "headless": true,
+            "boot_wait": "10s",
+            "disk_size": 8192,
+            "guest_os_type": "Fedora_64",
+            "http_directory": "http",
+            "iso_checksum": "1e3348cd10a97106c3e56f15f280502c9d274ef4149334d178b5781161b62be0",
+            "iso_checksum_type": "sha256",
+            "iso_url": "http://mirror.math.princeton.edu/pub/fedora/linux/releases/test/26_Beta/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-26_Beta-1.4.iso",
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "10000s",
+            "shutdown_command": "sudo systemctl poweroff",
+            "vboxmanage": [
+                ["modifyvm", "{{.Name}}", "--memory", "1024"],
+                ["modifyvm", "{{.Name}}", "--cpus", "1"]
+            ],
+            "guest_additions_path": "VBoxGuestAdditions.iso",
+            "virtualbox_version_file": ".vbox_version"
+        },
+        {
+            "type": "vmware-iso",
+            "boot_command": [
+                "<tab>",
+                "<wait>",
+                "linux inst.ks=http://{{.HTTPIP}}:{{.HTTPPort}}/fedora-23/anaconda-ks.cfg inst.nodnf=1 biosdevname=0 net.ifnames=0",
+                "<enter>"
+            ],
+            "boot_wait": "10s",
+            "disk_size": 8192,
+            "guest_os_type": "Fedora-64",
+            "headless": true,
+            "http_directory": "http",
+            "vmx_data": {
+                "memsize": "1024",
+                "numvcpus": "1"
+            },
+            "iso_checksum": "1e3348cd10a97106c3e56f15f280502c9d274ef4149334d178b5781161b62be0",
+            "iso_checksum_type": "sha256",
+            "iso_url": "http://mirror.math.princeton.edu/pub/fedora/linux/releases/test/26_Beta/Everything/x86_64/iso/Fedora-Everything-netinst-x86_64-26_Beta-1.4.iso",
+            "skip_compaction": true,
+            "ssh_username": "vagrant",
+            "ssh_password": "vagrant",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "10000s",
+            "shutdown_command": "sudo systemctl poweroff",
+            "tools_upload_flavor": "linux"
+        }
+    ],
+    "post-processors": [
+        [{
+            "type": "vagrant",
+            "keep_input_artifact": false
+        },
+        {
+            "type": "atlas",
+            "only": ["vmware-iso"],
+            "artifact": "rustic/Fedora26beta",
+            "artifact_type": "vagrant.box",
+            "metadata": {
+                "provider": "vmware_desktop",
+                "version": "0.0.1"
+            }
+        },
+        {
+            "type": "atlas",
+            "only": ["virtualbox-iso"],
+            "artifact": "rustic/Fedora26beta",
+            "artifact_type": "vagrant.box",
+            "metadata": {
+                "provider": "virtualbox",
+                "version": "0.0.1"
+            }
+        }]
+    ]
+}
