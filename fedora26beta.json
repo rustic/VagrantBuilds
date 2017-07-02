@@ -4,8 +4,10 @@
       "vcs": false
     },
     "variables": {
-        "atlas_username": "rustic",
-        "atlas_name": "Fedora26beta"
+        "vcloud_username": "rustic",
+        "vcloud_name": "Fedora26beta",
+        "vagrantcloud_token": "{{env `VAGRANTCLOUD_TOKEN`}}",
+        "version": "1.0.{{timestamp}}"
     },
     "provisioners": [
         {
@@ -94,17 +96,17 @@
             "type": "vagrant",
             "keep_input_artifact": false
         },
-        {
+	{
             "type": "vagrant-cloud",
-            "include": ["vmware-iso"],
-            "box_tag": "rustic/Fedora26beta",
-             "version": "0.0.2"
-        },
-        {
+            "access_token": "{{user `vagrantcloud_token`}}",
+            "box_tag": "{{user `vcloud_username`}}/{{user `vcloud_name`}}",
+            "version": "{{user `version`}}"
+    },
+    {
             "type": "vagrant-cloud",
-            "include": ["virtualbox-iso"],
-            "box_tag": "rustic/Fedora26beta",
-            "version": "0.0.2"
-        }]
+            "access_token": "{{user `vagrantcloud_token`}}",
+            "box_tag": "{{user `vcloud_username`}}/{{user `vcloud_name`}}",
+            "version": "{{user `version`}}"
+    }]
     ]
 }
