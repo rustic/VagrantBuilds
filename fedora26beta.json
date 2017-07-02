@@ -4,6 +4,7 @@
       "vcs": false
     },
     "variables": {
+        "template": "fedora-26-beta-x86_64",
         "vcloud_username": "rustic",
         "vcloud_name": "Fedora26beta",
         "vagrantcloud_token": "{{env `VAGRANTCLOUD_TOKEN`}}",
@@ -94,18 +95,23 @@
     "post-processors": [
         [{
             "type": "vagrant",
-            "keep_input_artifact": false
+            "keep_input_artifact": true,
+            "output": "builds/vagrant/{{user `template`}}.{{.Provider}}.box"
         },
-	{
+    {
             "type": "vagrant-cloud",
             "access_token": "{{user `vagrantcloud_token`}}",
+            "only": ["virtualbox-iso"],
             "box_tag": "{{user `vcloud_username`}}/{{user `vcloud_name`}}",
+            "version_description": "[{{user `vcloud_username`}}/{{user `vcloud_name`}}](https://github.com/{{user `vcloud_username`}}/{{user `vcloud_name`}})",
             "version": "{{user `version`}}"
     },
     {
             "type": "vagrant-cloud",
             "access_token": "{{user `vagrantcloud_token`}}",
+            "only": ["vmware-iso"],
             "box_tag": "{{user `vcloud_username`}}/{{user `vcloud_name`}}",
+            "version_description": "[{{user `vcloud_username`}}/{{user `vcloud_name`}}](https://github.com/{{user `vcloud_username`}}/{{user `vcloud_name`}})",
             "version": "{{user `version`}}"
     }]
     ]
